@@ -135,26 +135,6 @@
 <input type="text" id="namaUndangan" value="Dinar" placeholder="Masukkan nama yang diundang..." />
 
 <div id="isiUndangan" class="card">
-  <p>Kepada Yth.<br>
-  Bapak/Ibu/Saudara/i<br>
-  <span class="highlight" id="namaTerundang">Dinar</span><br>
-  _____________________</p>
-
-  <p><em>Assalamualaikum Warahmatullahi Wabarakatuh</em></p>
-
-  <p>Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i 
-    <span class="highlight" id="namaIsiUndangan">Dinar</span>, untuk menghadiri acara pernikahan kami.</p>
-
-  <p><strong>Berikut link undangan kami</strong>, untuk info lengkap dari acara, bisa kunjungi :</p>
-
-  <div class="link-undangan" id="linkContainer">
-    <div class="row">
-      <a href="https://undangan-rizki-gina.vercel.app" target="_blank" id="linkUndangan">
-        https://undangan-rizki-gina.vercel.app
-      </a>
-    </div>
-  </div>
-
   <div class="preview">
     <label for="previewText">Pratinjau teks (siap tempel ke WhatsApp)</label>
     <textarea id="previewText" rows="18" readonly></textarea>
@@ -162,15 +142,6 @@
       <button class="copy-btn" id="copyAllBtn" onclick="copyAll()">Salin Semua</button>
     </div>
   </div>
-
-  <p>Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.</p>
-
-  <p><em>Wassalamualaikum Warahmatullahi Wabarakatuh</em></p>
-
-  <p>Terima Kasih</p>
-
-  <p>Hormat kami,<br>
-  Rizki & Gina</p>
 </div>
 
 <button onclick="updateUndangan()">Perbaharui Undangan</button>
@@ -195,19 +166,11 @@
       return;
     }
 
-    // Update nama pada undangan
-    document.getElementById('namaTerundang').textContent = nama;
-    document.getElementById('namaIsiUndangan').textContent = nama;
-
     // Update link undangan (format query: ?to=slug)
     const baseUrl = "https://undangan-rizki-gina.vercel.app";
     const slug = slugifyNama(nama);
     // Contoh hasil: https://undangan-ashy.vercel.app/?to=dinar-dan-pasangan
     const prettyLink = baseUrl + "?to=" + slug;
-
-    const linkElem = document.getElementById('linkUndangan');
-    linkElem.href = prettyLink;
-    linkElem.textContent = prettyLink;
 
     // Update pratinjau teks untuk WA
     const preview = document.getElementById('previewText');
