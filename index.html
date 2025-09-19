@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Input Nama, Copy & Redirect</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 60px; }
+        input, button { font-size: 17px; padding: 8px; width: 300px; margin: 6px; }
+        button.copy-btn { width: 140px; }
+    </style>
+</head>
+<body>
+    <h1>Form Kirim Nama / Pasangan</h1>
+    <form onsubmit="kirimNama(event)">
+      <input type="text" id="nama" placeholder="Masukkan nama atau pasangan..." required>
+      <button type="button" class="copy-btn" onclick="copyLink()">Copy Link</button>
+      <br>
+      <button type="submit">Kirim & Redirect</button>
+    </form>
+    <span id="copy-status" style="color: green; font-size: 14px;"></span>
+
+    <script>
+    function generateLink() {
+        const nama = document.getElementById('nama').value.trim();
+        return "http://192.168.31.229:5174/?to=" + encodeURIComponent(nama.replace(/ /g, " + "));
+    }
+
+    function kirimNama(e) {
+        e.preventDefault();
+        const link = generateLink();
+        window.location.href = link;
+    }
+
+    function copyLink() {
+        const nama = document.getElementById('nama').value.trim();
+        if (nama.length === 0) return;
+        const link = generateLink();
+        navigator.clipboard.writeText(link).then(function() {
+            document.getElementById('copy-status').textContent = 'Link berhasil dicopy!';
+            setTimeout(() => document.getElementById('copy-status').textContent = '', 2000);
+        });
+    }
+    </script>
+</body>
+</html>
