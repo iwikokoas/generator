@@ -3,127 +3,260 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Undangan Pernikahan dengan Input Nama</title>
+<title>Undangan Pernikahan Personal</title>
 <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        padding: 20px;
-        line-height: 1.6;
-        background: #fff;
-        color: #333;
-        max-width: 600px;
-        margin: auto;
-    }
-    .highlight {
-        font-weight: bold;
-        font-style: italic;
-    }
-    .nama-keluarga {
-        color: #d35400;
-    }
-    h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        color: #2c3e50;
-    }
-    p {
-        margin: 12px 0;
-    }
-    .link-undangan {
-        background: #f2f2f2;
-        padding: 10px;
-        border-radius: 8px;
-        margin-top: 20px;
-        word-wrap: break-word;
-        font-size: 14px;
-        color: #0073e6;
-    }
-    .link-undangan a {
-        color: #0073e6;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .link-undangan a:hover {
-        text-decoration: underline;
-    }
-    input[type="text"] {
-        font-size: 1em;
-        padding: 8px;
-        width: 100%;
-        max-width: 360px;
-        margin: 10px 0;
-        border-radius: 5px;
-        border: 1px solid #bbb;
-        box-sizing: border-box;
-    }
-    button {
-        font-size: 1em;
-        padding: 10px 18px;
-        border-radius: 6px;
-        border: none;
-        background: #3b90fa;
-        color: #fff;
-        cursor: pointer;
-        margin-top: 12px;
-    }
-    button:hover {
-        background: #256ed8;
-    }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    color: #333;
+    background: #fff;
+    line-height: 1.6;
+  }
+  .card {
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  }
+  .header {
+    text-align: center;
+    padding: 12px 10px 18px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fbecec 0%, #fff 60%);
+    border-radius: 12px;
+  }
+  h2 {
+    text-align: center;
+    margin: 0 0 6px 0;
+    color: #2c3e50;
+  }
+  .subtitle {
+    margin: 0;
+    color: #6b7280;
+    font-size: .95em;
+  }
+  input[type="text"] {
+    width: 100%;
+    max-width: 360px;
+    padding: 10px;
+    font-size: 1.1em;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .highlight {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.4em;
+    color: #d35400;
+  }
+  .link-undangan {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 1em;
+    word-wrap: break-word;
+  }
+  .copy-btn {
+    font-size: .95em;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #3b90fa;
+    background: #e9f2ff;
+    color: #1f63c4;
+    cursor: pointer;
+  }
+  .copy-btn:hover {
+    background: #d9e9ff;
+  }
+  .preview {
+    margin-top: 18px;
+  }
+  .preview label {
+    display: block;
+    margin-bottom: 8px;
+    color: #374151;
+    font-weight: 600;
+  }
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    resize: vertical;
+    background: #fff;
+    white-space: pre-wrap;
+  }
+  a {
+    color: #0073e6;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  button {
+    font-size: 1.1em;
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: none;
+    background: #3b90fa;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  button:hover {
+    background: #256ed8;
+  }
 </style>
 </head>
 <body>
 
-<h2>Undangan Akad dan Syukuran Pernikahan</h2>
-
-<input type="text" id="inputNama" placeholder="Masukkan nama keluarga besar..." value="Pa Opik & Keluarga" />
-
-<p>Assalamualaikum Warahmatullahi Wabarakatuh.</p>
-
-<p>Dengan hormat, kami ingin mengundang Keluarga Besar 
-    <span class="highlight nama-keluarga" id="namaKeluarga">*“Pa Opik & Keluarga”*</span> 
-    untuk menghadiri acara akad sekaligus syukuran pernikahan kami, 
-    <br><strong>Rizki & Gina</strong></p>
-
-<p>Acara akan dilaksanakan pada:</p>
-<ul>
-    <li><strong>Hari, Tanggal:</strong> Minggu, 5 Oktober 2025</li>
-    <li><strong>Pukul:</strong> 10.30 - Selesai</li>
-    <li><strong>Lokasi:</strong> Rumah Mbah, Jl Aminta Azmali RT.02/RW.08 Kelurahan Sriwidari Kecamatan Gunung Puyuh</li>
-</ul>
-
-<p>Atas kehadiran dan doa restu Bapak/Ibu/Saudara/i, kami ucapkan terima kasih.</p>
-
-<p>Wassalam</p>
-
-<div class="link-undangan">
-    Link Undangan Anda: 
-    <a href="#" id="linkUndangan" target="_blank"></a>
+<div class="header card">
+  <h2>Undangan Pernikahan Personal</h2>
+  <p class="subtitle">Buat tautan undangan yang lebih rapi dan elegan</p>
 </div>
 
-<button onclick="updateUndangan()">Update Undangan & Link</button>
+<label for="namaUndangan">Masukkan Nama yang Diundang:</label>
+<input type="text" id="namaUndangan" value="Dinar" placeholder="Masukkan nama yang diundang..." />
+
+<div id="isiUndangan" class="card">
+  <p>Kepada Yth.<br>
+  Bapak/Ibu/Saudara/i<br>
+  <span class="highlight" id="namaTerundang">Dinar</span><br>
+  _____________________</p>
+
+  <p><em>Assalamualaikum Warahmatullahi Wabarakatuh</em></p>
+
+  <p>Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i 
+    <span class="highlight" id="namaIsiUndangan">Dinar</span>, untuk menghadiri acara pernikahan kami.</p>
+
+  <p><strong>Berikut link undangan kami</strong>, untuk info lengkap dari acara, bisa kunjungi :</p>
+
+  <div class="link-undangan" id="linkContainer">
+    <div class="row">
+      <a href="https://undangan-rizki-gina.vercel.app" target="_blank" id="linkUndangan">
+        https://undangan-rizki-gina.vercel.app
+      </a>
+    </div>
+  </div>
+
+  <div class="preview">
+    <label for="previewText">Pratinjau teks (siap tempel ke WhatsApp)</label>
+    <textarea id="previewText" rows="18" readonly></textarea>
+    <div style="margin-top:10px">
+      <button class="copy-btn" id="copyAllBtn" onclick="copyAll()">Salin Semua</button>
+    </div>
+  </div>
+
+  <p>Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.</p>
+
+  <p><em>Wassalamualaikum Warahmatullahi Wabarakatuh</em></p>
+
+  <p>Terima Kasih</p>
+
+  <p>Hormat kami,<br>
+  Rizki & Gina</p>
+</div>
+
+<button onclick="updateUndangan()">Perbaharui Undangan</button>
 
 <script>
-  function updateUndangan() {
-    const inputNama = document.getElementById('inputNama').value.trim();
-    const namaKeluargaElem = document.getElementById('namaKeluarga');
-    const linkElem = document.getElementById('linkUndangan');
+  function slugifyNama(nama) {
+    const normalized = nama
+      .toLowerCase()
+      .replace(/&/g, ' dan ')
+      .replace(/\s+dan\s+/g, ' dan ')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .trim()
+      .replace(/\s+/g, '-');
+    return normalized.replace(/-+/g, '-');
+  }
 
-    if (inputNama === "") {
-      alert("Nama keluarga besar wajib diisi.");
+  function updateUndangan() {
+    const nama = document.getElementById('namaUndangan').value.trim();
+    if (nama === "") {
+      alert("Nama yang diundang harus diisi.");
       return;
     }
 
-    namaKeluargaElem.textContent = `*“${inputNama}”*`;
+    // Update nama pada undangan
+    document.getElementById('namaTerundang').textContent = nama;
+    document.getElementById('namaIsiUndangan').textContent = nama;
 
-    const baseUrl = "http://192.168.31.229:5174/";
-    const formattedNama = encodeURIComponent(inputNama.replace(/ /g, " + "));
-    const fullUrl = baseUrl + "?to=" + formattedNama;
+    // Update link undangan (format query: ?to=slug)
+    const baseUrl = "https://undangan-rizki-gina.vercel.app";
+    const slug = slugifyNama(nama);
+    // Contoh hasil: https://undangan-ashy.vercel.app/?to=dinar-dan-pasangan
+    const prettyLink = baseUrl + "?to=" + slug;
 
-    linkElem.textContent = fullUrl;
-    linkElem.href = fullUrl;
+    const linkElem = document.getElementById('linkUndangan');
+    linkElem.href = prettyLink;
+    linkElem.textContent = prettyLink;
+
+    // Update pratinjau teks untuk WA
+    const preview = document.getElementById('previewText');
+    preview.value = generateMessage(nama, prettyLink);
   }
 
-  // Inisialisasi tampilan saat halaman dibuka
+  function generateMessage(nama, link) {
+    const lines = [
+      'Kepada Yth.',
+      'Bapak/Ibu/Saudara/i',
+      nama,
+      '____________________',
+      '',
+      'Assalamualaikum Warahmatullahi Wabarakatuh',
+      '',
+      'Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i',
+      `${nama}, untuk menghadiri acara pernikahan kami.`,
+      '',
+      'Berikut link undangan kami, untuk info lengkap dari acara, bisa kunjungi :',
+      '',
+      link,
+      '',
+      'Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk',
+      'hadir dan memberikan doa restu.',
+      '',
+      'Wassalamualaikum Warahmatullahi Wabarakatuh',
+      '',
+      'Terima Kasih',
+      '',
+      'Hormat kami,',
+      'Rizki & Gina'
+    ];
+    return lines.join('\n');
+  }
+
+  function copyAll() {
+    const text = document.getElementById('previewText').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copyAllBtn');
+      const prev = btn.textContent;
+      btn.textContent = 'Tersalin';
+      setTimeout(() => btn.textContent = prev, 1500);
+    }).catch(() => {
+      alert('Gagal menyalin teks.');
+    });
+  }
+
+  // Inisialisasi halaman dengan data default
   updateUndangan();
 </script>
 
