@@ -1,45 +1,102 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Input Nama, Copy & Redirect</title>
-    <style>
-        body { font-family: sans-serif; text-align: center; margin-top: 60px; }
-        input, button { font-size: 17px; padding: 8px; width: 300px; margin: 6px; }
-        button.copy-btn { width: 140px; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Undangan Pernikahan</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px;
+        line-height: 1.6;
+        background: #fff;
+        color: #333;
+        max-width: 600px;
+        margin: auto;
+    }
+    .highlight {
+        font-weight: bold;
+        font-style: italic;
+    }
+    .nama-keluarga {
+        color: #d35400;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #2c3e50;
+    }
+    p {
+        margin: 12px 0;
+    }
+    .link-undangan {
+        background: #f2f2f2;
+        padding: 10px;
+        border-radius: 8px;
+        margin-top: 20px;
+        word-wrap: break-word;
+        font-size: 14px;
+        color: #0073e6;
+    }
+    .link-undangan a {
+        color: #0073e6;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .link-undangan a:hover {
+        text-decoration: underline;
+    }
+</style>
 </head>
 <body>
-    <h1>Form Kirim Nama / Pasangan</h1>
-    <form onsubmit="kirimNama(event)">
-      <input type="text" id="nama" placeholder="Masukkan nama atau pasangan..." required>
-      <button type="button" class="copy-btn" onclick="copyLink()">Copy Link</button>
-      <br>
-      <button type="submit">Kirim & Redirect</button>
-    </form>
-    <span id="copy-status" style="color: green; font-size: 14px;"></span>
 
-    <script>
-    function generateLink() {
-        const nama = document.getElementById('nama').value.trim();
-        return "http://192.168.31.229:5174/?to=" + encodeURIComponent(nama.replace(/ /g, " + "));
-    }
+<h2>Undangan Akad dan Syukuran Pernikahan</h2>
 
-    function kirimNama(e) {
-        e.preventDefault();
-        const link = generateLink();
-        window.location.href = link;
-    }
+<p>Assalamualaikum Warahmatullahi Wabarakatuh.</p>
 
-    function copyLink() {
-        const nama = document.getElementById('nama').value.trim();
-        if (nama.length === 0) return;
-        const link = generateLink();
-        navigator.clipboard.writeText(link).then(function() {
-            document.getElementById('copy-status').textContent = 'Link berhasil dicopy!';
-            setTimeout(() => document.getElementById('copy-status').textContent = '', 2000);
-        });
+<p>Dengan hormat, kami ingin mengundang Keluarga Besar 
+    <span class="highlight nama-keluarga" id="namaKeluarga">*“Pa Opik & Keluarga”*</span> 
+    untuk menghadiri acara akad sekaligus syukuran pernikahan kami, 
+    <br><strong>Rizki & Gina</strong></p>
+
+<p>Acara akan dilaksanakan pada:</p>
+<ul>
+    <li><strong>Hari, Tanggal:</strong> Minggu, 5 Oktober 2025</li>
+    <li><strong>Pukul:</strong> 10.30 - Selesai</li>
+    <li><strong>Lokasi:</strong> Rumah Mbah, Jl Aminta Azmali RT.02/RW.08 Kelurahan Sriwidari Kecamatan Gunung Puyuh</li>
+</ul>
+
+<p>Atas kehadiran dan doa restu Bapak/Ibu/Saudara/i, kami ucapkan terima kasih.</p>
+
+<p>Wassalam</p>
+
+<div class="link-undangan">
+    Link Undangan Anda: 
+    <a href="#" id="linkUndangan" target="_blank"></a>
+</div>
+
+<script>
+  function isiNamaKeluarga(nama) {
+    let elem = document.getElementById('namaKeluarga');
+    if (nama && nama.trim() !== "") {
+      elem.textContent = `*“${nama}”*`;
     }
-    </script>
+  }
+
+  function isiLinkUndangan(nama) {
+    const baseUrl = "http://192.168.31.229:5174/";
+    const formattedNama = encodeURIComponent(nama.trim().replace(/ /g, " + "));
+    const fullUrl = baseUrl + "?to=" + formattedNama;
+    const linkElem = document.getElementById("linkUndangan");
+    linkElem.textContent = fullUrl;
+    linkElem.href = fullUrl;
+  }
+
+  // Ganti ini dengan nama yang di-generate atau input user
+  const namaKeluarga = "Pa Opik & Keluarga";
+  isiNamaKeluarga(namaKeluarga);
+  isiLinkUndangan(namaKeluarga);
+</script>
+
 </body>
 </html>
