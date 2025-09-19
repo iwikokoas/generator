@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Undangan Pernikahan</title>
+<title>Undangan Pernikahan dengan Input Nama</title>
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -46,11 +46,36 @@
     .link-undangan a:hover {
         text-decoration: underline;
     }
+    input[type="text"] {
+        font-size: 1em;
+        padding: 8px;
+        width: 100%;
+        max-width: 360px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #bbb;
+        box-sizing: border-box;
+    }
+    button {
+        font-size: 1em;
+        padding: 10px 18px;
+        border-radius: 6px;
+        border: none;
+        background: #3b90fa;
+        color: #fff;
+        cursor: pointer;
+        margin-top: 12px;
+    }
+    button:hover {
+        background: #256ed8;
+    }
 </style>
 </head>
 <body>
 
 <h2>Undangan Akad dan Syukuran Pernikahan</h2>
+
+<input type="text" id="inputNama" placeholder="Masukkan nama keluarga besar..." value="Pa Opik & Keluarga" />
 
 <p>Assalamualaikum Warahmatullahi Wabarakatuh.</p>
 
@@ -75,27 +100,31 @@
     <a href="#" id="linkUndangan" target="_blank"></a>
 </div>
 
-<script>
-  function isiNamaKeluarga(nama) {
-    let elem = document.getElementById('namaKeluarga');
-    if (nama && nama.trim() !== "") {
-      elem.textContent = `*“${nama}”*`;
-    }
-  }
+<button onclick="updateUndangan()">Update Undangan & Link</button>
 
-  function isiLinkUndangan(nama) {
+<script>
+  function updateUndangan() {
+    const inputNama = document.getElementById('inputNama').value.trim();
+    const namaKeluargaElem = document.getElementById('namaKeluarga');
+    const linkElem = document.getElementById('linkUndangan');
+
+    if (inputNama === "") {
+      alert("Nama keluarga besar wajib diisi.");
+      return;
+    }
+
+    namaKeluargaElem.textContent = `*“${inputNama}”*`;
+
     const baseUrl = "http://192.168.31.229:5174/";
-    const formattedNama = encodeURIComponent(nama.trim().replace(/ /g, " + "));
+    const formattedNama = encodeURIComponent(inputNama.replace(/ /g, " + "));
     const fullUrl = baseUrl + "?to=" + formattedNama;
-    const linkElem = document.getElementById("linkUndangan");
+
     linkElem.textContent = fullUrl;
     linkElem.href = fullUrl;
   }
 
-  // Ganti ini dengan nama yang di-generate atau input user
-  const namaKeluarga = "Pa Opik & Keluarga";
-  isiNamaKeluarga(namaKeluarga);
-  isiLinkUndangan(namaKeluarga);
+  // Inisialisasi tampilan saat halaman dibuka
+  updateUndangan();
 </script>
 
 </body>
